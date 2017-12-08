@@ -8,6 +8,8 @@ class InteractiveShell(object):
         self.create_commands = ['create', 'new']
         self.edit_commands = ['edit', 'update']
         self.delete_commands = ['delete', 'erase']
+        self.all_commands = self.exit_commands + self.create_commands + \
+                            self.edit_commands + self.delete_commands
         self.current_command = ''
 
     def welcome(self):
@@ -26,4 +28,8 @@ class InteractiveShell(object):
         self.parse_command()
 
     def parse_command(self):
-        if split(self.current_command,' ')[0] in self.known_commands
+        if self.current_command.split(' ')[0] in self.all_commands:
+            self.last_commands.append(self.current_command)
+            print(self.last_commands)
+        else:
+            print("(Jane): Sorry I didn't get what you meant")
