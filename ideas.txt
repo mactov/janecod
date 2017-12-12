@@ -1,0 +1,6 @@
+#000: As a user, I can create a new project, in order to hold my future pages or files.
+#001: As a user, I can open a web browser, in order to see how my pages look like
+#002: As a user, I can create a page, in order to have a cool web site even though I don't know how to make one
+#003: As a user, I can add a title to my web page, in order to know which page my web broswer shows
+#004: As a user, I can answer Jane's further questions if my command is incomplete, in order to make it a proper command
+#005: 
