@@ -1,5 +1,6 @@
 from FileManager import FileManager
 
+
 class InteractiveShell(object):
     """This class holds all the interaction methods"""
     def __init__(self, silent, interface):
@@ -8,15 +9,17 @@ class InteractiveShell(object):
         self.interface = interface
         self.file_manager = FileManager()
         self.last_commands = []
-        self.exit_commands = ['exit','quit','q']
-        self.create_commands = ['create', 'start']
-        self.edit_commands = ['edit', 'update', 'open', 'use']
-        self.delete_commands = ['delete', 'erase']
-        self.all_commands = self.exit_commands + self.create_commands + \
-                            self.edit_commands + self.delete_commands
-        self.ignored_words = ['new']
-        self.project_commands = ['project', 'folder', 'repository', 'site']
-        self.pages_commands = ['page', 'file', 'stylesheet']
+        self.exit_commands = {'exit','quit','q'}
+        self.create_commands = {'create', 'start'}
+        self.edit_commands = {'edit', 'update', 'open', 'use'}
+        self.delete_commands = {'delete', 'erase'}
+        self.all_commands = self.exit_commands.union(
+                            self.create_commands).union(
+                            self.edit_commands).union(
+                            self.delete_commands)
+        self.ignored_words = {'new'}
+        self.project_commands = {'project', 'folder', 'repository', 'site'}
+        self.pages_commands = {'page', 'file', 'stylesheet'}
         self.current_command = ''
 
     def say(self, message):
