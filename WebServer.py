@@ -3,19 +3,21 @@ import socketserver
 import os
 import threading
 
+
 class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
+
     def log_message(self, format, *args):
         return   
 
+
 class WebServer(object):
 
-
-    def __init__(self, project):
-        self.project = project
+    def __init__(self):
+        self.project = None
         self.port = 29172
 
-
-    def start(self):
+    def start(self, project):
+        self.project = project
         os.chdir(self.project)
         Handler = MyRequestHandler
         httpd = socketserver.TCPServer(("", self.port), Handler)

@@ -1,12 +1,11 @@
 import os
 from shutil import copyfile
-from WebServer import WebServer
 
 
 class FileManager(object):
     def __init__(self):
         self.current_project_location = ''
-        self.template_folder = os.getcwd()
+        self.template_folder = os.path.join(os.getcwd(),'templates')
 
     def create_project(self, name):
         if self.current_project_location == '':
@@ -17,8 +16,8 @@ class FileManager(object):
                 self.current_project_location = folder
                 self.create_page('index.html', 'empty.html')
                 self.create_page('overall.css','empty.css')
-                ws = WebServer(self.current_project_location)
-                ws.start()
+                # ws = WebServer(self.current_project_location)
+                # ws.start()
                 
 
     def create_page(self, name, template = None):
