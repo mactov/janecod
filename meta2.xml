@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ERP">
+    <apps>
+        <app name="CRM" />
+    </apps>
+    <models>
+        <model name="customer">
+            <field name="name" type="string" />
+        </model>
+    </models>
+</project>
