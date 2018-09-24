@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project id="ERP">
+    <target>SQL</target>
+    <apps>
+        <app>CRM</app>
+    </apps>
+    <hosts>
+        <host type="postgres">localhost</host>
+    </hosts>
+    <models>
+        <model app="CRM" name="customer">
+            <field type="String" id="name" nullable="false" default="" length="50">name</field>
+            <field type="Boolean" id="is_company" default="True">Is Company</field>
+        </model>
+        <model app="CRM" name="contact">
+            <field type="String" id="first_name" nullable="false" default="">First Name</field>
+            <field type="String" id="last_name" nullable="false" default="">Last Name</field>
+            <field type="foreign_key" related_model="customer" id="customer">Customer</field>
+        </model>
+    </models>
+</project>
