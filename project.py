@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as et
+from postgresql import PSqlCommand
 
 
 class Project:
@@ -12,6 +13,12 @@ class Project:
         self.load_from_xml('meta.xml')
 
     def create_sql(self):
+        psql = PSqlCommand()
+        if self.name:
+            try:
+                psql.connect(self.name)
+            except Exception as error:
+                print(error)
         if self.models:
             print(self.models)
 
@@ -19,6 +26,8 @@ class Project:
         try:
             tree = et.parse(xml_file)
             root = tree.getroot()
+            if root.attrib['id']:
+                self.name = root.attrib['id']
             for child in root:
                 if child.tag.lower() == 'target':
                     self.target = child.text.lower()
