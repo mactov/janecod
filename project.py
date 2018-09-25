@@ -1,15 +1,23 @@
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as et
 
 
 class Project:
+    target = ''
+    hosts = []
+    name = ''
+    apps = []
+    models = []
 
-    def __init__(self, xml_file):
-        self.apps = []
-        self.hosts = []
-        self.models = []
-        self.target = ''
+    def __init__(self):
+        self.load_from_xml('meta.xml')
+
+    def create_sql(self):
+        if self.models:
+            print(self.models)
+
+    def load_from_xml(self, xml_file):
         try:
-            tree = ET.parse(xml_file)
+            tree = et.parse(xml_file)
             root = tree.getroot()
             for child in root:
                 if child.tag.lower() == 'target':
@@ -26,16 +34,14 @@ class Project:
         except IOError:
             print('There has been an error while loading the XML file')
 
-    def parse_model(self, xml_model):
-        id = xml_model.attrib['app'].lower() +\
-             '_'+xml_model.attrib['name'].lower()
-        mdl = {'id': id}
+    @staticmethod
+    def parse_model(xml_model):
+        _id = xml_model.attrib['app'].lower() + \
+             '_' + xml_model.attrib['name'].lower()
+        mdl = {'id': _id}
         fields = []
         for field in xml_model:
             if field.tag.lower() == 'field':
                 fields.append(field.attrib)
         mdl['fields'] = fields
         return mdl
-
-    def create_sql_db(self):
-        pass
