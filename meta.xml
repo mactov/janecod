@@ -16,6 +16,7 @@
         <model app="CRM" name="contact">
             <field type="String" id="first_name" nullable="false" default="">First Name</field>
             <field type="String" id="last_name" nullable="false" default="">Last Name</field>
+            <field type="String" id="email" nullable="false" default="">Email</field>
             <field type="foreign_key" related_model="customer" id="customer">Customer</field>
         </model>
     </models>

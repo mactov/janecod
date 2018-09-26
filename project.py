@@ -12,15 +12,18 @@ class Project:
     def __init__(self):
         self.load_from_xml('meta.xml')
 
+    def generate(self):
+        if self.target.lower() == 'sql':
+            self.create_sql()
+
     def create_sql(self):
         psql = PSqlCommand()
         if self.name:
             try:
                 psql.connect(self.name)
+                psql.create_tables(self.models)
             except Exception as error:
                 print(error)
-        if self.models:
-            print(self.models)
 
     def load_from_xml(self, xml_file):
         try:
