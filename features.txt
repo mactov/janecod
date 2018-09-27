@@ -1,0 +1,14 @@
+=Advanced SQL=
+-combined foreign keys
+-exotic data types
+-many to many relationship
+-bullet-proofing vs typos, missing info
+=Django=
+-startproject
+-startapp
+-models.py
+-admin
+-url/views
+
+
+

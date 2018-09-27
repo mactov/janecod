@@ -48,9 +48,9 @@ class Project:
 
     @staticmethod
     def parse_model(xml_model):
-        _id = xml_model.attrib['app'].lower() + \
-             '_' + xml_model.attrib['name'].lower()
-        mdl = {'id': _id}
+        app = xml_model.attrib['app'].lower()
+        _id = xml_model.attrib['name'].lower()
+        mdl = {'id': _id, 'app': app}
         fields = []
         for field in xml_model:
             if field.tag.lower() == 'field':
